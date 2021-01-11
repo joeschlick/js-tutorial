@@ -9,6 +9,10 @@ function activateItem(e) {
   console.log("click");
   if (e.target.nodeName == "LI") {
     headLine.innerHTML = e.target.innerHTML;
+    for (let i = 0; i < e.target.parentNode.children.length; i++) {
+        e.target.parentNode.children[i].classList.remove("active"); 
+    }
+    e.target.classList.add("active");
   }
 }
 
@@ -17,5 +21,5 @@ ourButton.addEventListener("click", addItem);
 function addItem() {
   ourList.innerHTML += "<li>List Item " + itemValue + "</li>";
   itemValue ++;
-  ourList.classList.add("list-group-item")
+  ourList.classList.add("list-group-item", "listStyle")
 }
