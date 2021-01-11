@@ -1,18 +1,21 @@
-const ourButton = getElementById("our-button");
-const headLine = document.getElementById("our-headline");
-const listItems = document.getElementById("our-list").getElementsByTagName("li")
+const ourList = document.querySelector("#our-list");
+const ourButton = document.querySelector("#our-button");
+const headLine = document.querySelector("#our-headline");
+let itemValue = 1
 
-for (let i = 0; i < listItems.length; i++) {
-    listItems[i].addEventListener("click", activateItem);
-}
+ourList.addEventListener("click", activateItem);
 
-function activateItem() {
-    console.log("click");
-    headLine.innerHTML = this.innerHTML;
+function activateItem(e) {
+  console.log("click");
+  if (e.target.nodeName == "LI") {
+    headLine.innerHTML = e.target.innerHTML;
+  }
 }
 
 ourButton.addEventListener("click", addItem);
 
 function addItem() {
-    
+  ourList.innerHTML += "<li>List Item " + itemValue + "</li>";
+  itemValue ++;
+  ourList.classList.add("list-group-item")
 }
